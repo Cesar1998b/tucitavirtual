@@ -1,0 +1,34 @@
+{
+  "citas": [
+    {
+      "id": 1,
+      "name": "Cesar David",
+      "lastname": "Botina",
+      "email": "cesarbotina98@gmail.com",
+      "tel": 3156468519,
+      "city": "Cali",
+      "date": "2021-10-18",
+      "tarifa": 150000
+    },
+    {
+      "id": 2,
+      "nameUser": "Cesar David",
+      "lastNameUser": "Botina",
+      "emailUser": "sadadasdada@gmail.com",
+      "telUser": 3156468519,
+      "cityUser": "Cali",
+      "date": "2021-10-21",
+      "tarifa": 150000
+    },
+    {
+      "id": 3,
+      "nameUser": "Felipe",
+      "lastNameUser": "Ortiz",
+      "emailUser": "felipe@gmail.com",
+      "telUser": 3164846234,
+      "cityUser": "Barranquilla",
+      "date": "2021-10-18",
+      "tarifa": 300000
+    }
+  ]
+}
