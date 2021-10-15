@@ -1,0 +1,48 @@
+#container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+#card-1,
+#card-2{
+  width: 30%;
+}
+
+#card-1 h2{
+  margin-bottom: 50px;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+#card-1 p{
+  width: 65%;
+  font-size: 16px;
+  text-align: justify;
+  margin-bottom: 25px;
+}
+
+#card-1 button{
+  font-size: 15px;
+  text-transform: uppercase;
+  border-radius: 14px;
+}
+
+#container-card{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 16px;
+}
+
+#card-main mat-icon{
+  font-size: 30px;
+  margin-bottom: 16px;
+  color:  #3f51b5;
+}
+
+#card-main p{
+  width: 80%;
+  font-size: 18px;
+  font-weight: 500;
+}
