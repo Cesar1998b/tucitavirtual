@@ -1,0 +1,109 @@
+<section class="container">
+  <h1>Solicita tu Cita</h1>
+  <form [formGroup]="citasForm" novalidate>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombres</mat-label>
+        <input
+          matInput
+          type="text"
+          id="name"
+          name="name"
+          class="form-control"
+          formControlName="name"
+        />
+        <mat-error validar>Por favor ingrese su nombre</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Apellidos</mat-label>
+        <input
+          matInput
+          type="text"
+          id="lastname"
+          name="lastname"
+          class="form-control"
+          formControlName="lastname"
+        />
+        <mat-error validar>Por favor ingrese su apellido</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="text"
+          id="email"
+          name="email"
+          class="form-control"
+          placeholder="pat@example.com"
+          formControlName="email"
+        />
+        <mat-error validar>Por favor ingrese un email valido</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Teléfono</mat-label>
+        <input
+          matInput
+          type="number"
+          id="telefono"
+          name="telefono"
+          class="form-control"
+          formControlName="tel"
+        />
+        <mat-error validar>Por favor ingrese su teléfono</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Ciudad</mat-label>
+        <input
+          matInput
+          type="text"
+          id="ciudad"
+          name="ciudad"
+          class="form-control"
+          formControlName="city"
+        />
+        <mat-error validar>Por favor ingrese su ciudad</mat-error>
+      </mat-form-field>
+      <mat-form-field class="date" appearance="outline">
+        <mat-label>Fecha</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [min]="today"
+          id="date"
+          name="date"
+          placeholder="Fecha"
+          class="form-control"
+          formControlName="date"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="btn-cita">
+      <button
+        type="submit"
+        id="agendar-cita_btn"
+        mat-raised-button
+        color="primary"
+        [disabled]="citasForm.invalid"
+        (click)="cerar()"
+      >
+        Agendar cita
+      </button>
+    </div>
+  </form>
+</section>
+
+<!-- <div class="row">
+      <div class="col-sm-2">
+        <label>Nombres:</label>
+      </div>
+      <div class="col-sm-4">
+        <input validar type="text" id="userName" name="userName" placeholder="Nombre:" class="form-control"
+          formControlName="name">
+      </div>
+    </div> -->
