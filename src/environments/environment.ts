@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   endpoint: '/prospectos-vida',
-  endpoint2: '/api'
+  endpoint2: 'http://localhost:3000/'
 };
 
 /*

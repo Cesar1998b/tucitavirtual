@@ -2,9 +2,5 @@
   "/prospectos-vida": {
     "target": "http://localhost:4200",
     "logLevel": "debug"
-  },
-  "/api": {
-    "target": "http://localhost:3000",
-    "logLevel": "debug"
   }
 }
