@@ -6,15 +6,14 @@ import { MenuItem } from '@core/modelo/menu-item';
   templateUrl: 'navbar.component.html',
   styles: [`:host {
     border: 0 solid #e1e1e1;
-    border-bottom-width: 1px;
     display: block;
     height: 48px;
     padding: 0 16px;
   }
 
   nav a {
-    color: #201d1d;
-    font-size: 14px;
+    color: #fff;
+    font-size: 16px;
     font-weight: 500;
     line-height: 48px;
     margin-right: 20px;
