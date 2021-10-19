@@ -1,5 +1,6 @@
 <section class="container">
   <h1>Solicita tu Cita</h1>
+  <span>Dada la fecha que ingreses se agendará la cita el siguiente día hábil</span>
   <form [formGroup]="citasForm" novalidate>
     <div class="row">
       <mat-form-field appearance="outline">
@@ -11,6 +12,7 @@
           name="name"
           class="form-control"
           formControlName="name"
+          [(ngModel)]="cita.nameUser"
         />
         <mat-error validar>Por favor ingrese su nombre</mat-error>
       </mat-form-field>
@@ -23,6 +25,7 @@
           name="lastname"
           class="form-control"
           formControlName="lastname"
+          [(ngModel)]="cita.lastNameUser"
         />
         <mat-error validar>Por favor ingrese su apellido</mat-error>
       </mat-form-field>
@@ -38,6 +41,7 @@
           class="form-control"
           placeholder="pat@example.com"
           formControlName="email"
+          [(ngModel)]="cita.emailUser"
         />
         <mat-error validar>Por favor ingrese un email valido</mat-error>
       </mat-form-field>
@@ -50,6 +54,7 @@
           name="telefono"
           class="form-control"
           formControlName="tel"
+          [(ngModel)]="cita.telUser"
         />
         <mat-error validar>Por favor ingrese su teléfono</mat-error>
       </mat-form-field>
@@ -64,6 +69,7 @@
           name="ciudad"
           class="form-control"
           formControlName="city"
+          [(ngModel)]="cita.cityUser"
         />
         <mat-error validar>Por favor ingrese su ciudad</mat-error>
       </mat-form-field>
@@ -78,6 +84,7 @@
           placeholder="Fecha"
           class="form-control"
           formControlName="date"
+          [(ngModel)]="cita.date"
         />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -90,20 +97,10 @@
         mat-raised-button
         color="primary"
         [disabled]="citasForm.invalid"
-        (click)="cerar()"
+        (click)="agendarCita()"
       >
         Agendar cita
       </button>
     </div>
   </form>
 </section>
-
-<!-- <div class="row">
-      <div class="col-sm-2">
-        <label>Nombres:</label>
-      </div>
-      <div class="col-sm-4">
-        <input validar type="text" id="userName" name="userName" placeholder="Nombre:" class="form-control"
-          formControlName="name">
-      </div>
-    </div> -->
