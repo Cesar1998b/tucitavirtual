@@ -33,7 +33,7 @@ export class ProductoService {
 
   public guardarCita(cita: Cita) {
     return this.http.doPost<Cita, boolean>(
-      `${environment.endpoint2}/citas`,
+      `${environment.endpoint2}citas`,
       cita,
       this.http.optsName("crear cita")
     );
