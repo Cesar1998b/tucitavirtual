@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ProductoRoutingModule } from './producto-routing.module';
 import { BorrarProductoComponent } from './components/borrar-producto/borrar-producto.component';
 import { ListarProductoComponent } from './components/listar-producto/listar-producto.component';
-import { FormCitaComponent } from './components/form-cita/form-cita.component';
+import { AgendarCitaComponent } from './components/agendar-cita/agendar-cita.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { ProductoService } from './shared/service/producto.service';
 import { SharedModule } from '@shared/shared.module';
@@ -15,7 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
-    FormCitaComponent,
+    AgendarCitaComponent,
     ListarProductoComponent,
     BorrarProductoComponent,
     ProductoComponent,

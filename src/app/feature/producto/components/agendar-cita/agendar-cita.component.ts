@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductoService } from "../../shared/service/producto.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { Cita } from "./../../shared/model/cita";
+import { Cita } from "../../shared/model/cita";
 
 declare var require: any;
 const LONGITUD_MINIMA_PERMITIDA_TEXTO = 3;
@@ -9,11 +9,11 @@ const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
 const TARIFA_FIJA = 150000;
 
 @Component({
-  selector: "app-form-cita",
-  templateUrl: "./form-cita.component.html",
-  styleUrls: ["./form-cita.component.scss"],
+  selector: "app-agendar-cita",
+  templateUrl: "./agendar-cita.component.html",
+  styleUrls: ["./agendar-cita.component.scss"],
 })
-export class FormCitaComponent implements OnInit {
+export class AgendarCitaComponent implements OnInit {
   citasForm: FormGroup;
   today: Date = new Date();
   holidays: [];
