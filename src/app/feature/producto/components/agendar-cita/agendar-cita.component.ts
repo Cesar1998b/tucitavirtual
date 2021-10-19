@@ -45,7 +45,6 @@ export class AgendarCitaComponent implements OnInit {
   }
 
   agendarCita() {
-    // this.productoServices.guardar(this.citasForm.value);
     var fecha = this.citasForm.value.date;
     fecha.setDate(fecha.getDate() + 1);
     if (fecha.getDay() === 0 || fecha.getDay() === 6) {
