@@ -1,37 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
+import { MenuItem } from "@core/modelo/menu-item";
 
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: 'toolbar.component.html',
-  styles: [`:host {
-    background-color: #3f51b5;
-    color: rgba(255, 255, 255, 0.87);
-    display: block;
-    height: 48px;
-    padding: 0 16px;
-  }
+  selector: "app-toolbar",
+  templateUrl: "toolbar.component.html",
+  styles: [
+    `
+      .container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1rem 0 2rem;
+      }
+      a {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 48px;
+        margin-right: 20px;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+      }
 
-  h1 {
-    display: inline;
-    font-size: 20px;
-    font-weight: normal;
-    letter-spacing: 0.1px;
-    line-height: 48px;
-  }
-
-  .more {
-    background: url("/assets/svg/more.svg");
-    float: right;
-    height: 24px;
-    margin-top: 12px;
-    width: 24px;
-  }`]
+      a.router-link-active {
+        color: #106cc8;
+      }
+    `,
+  ],
 })
 export class ToolbarComponent implements OnInit {
+  @Input()
+  items: MenuItem[];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
