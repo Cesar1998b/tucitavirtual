@@ -17,7 +17,7 @@ export class AgendarCitaComponent implements OnInit {
   citasForm: FormGroup;
   today: Date = new Date();
   holidays: [];
-  cita: Cita;
+  cita = new Cita();
 
   constructor(protected productoServices: ProductoService) {}
 
@@ -44,7 +44,7 @@ export class AgendarCitaComponent implements OnInit {
     });
   }
 
-  cerar() {
+  agendarCita() {
     // this.productoServices.guardar(this.citasForm.value);
     var fecha = this.citasForm.value.date;
     fecha.setDate(fecha.getDate() + 1);
@@ -55,10 +55,14 @@ export class AgendarCitaComponent implements OnInit {
       let f = fecha.toISOString().substring(0, 10);
       let holiday = this.holidays.find((item) => item["holiday"] == f);
       if (holiday === undefined) {
-        this.crearCita(2,this.citasForm,f,TARIFA_FIJA);
+        this.cita.date = f;
+        this.cita.tarifa = TARIFA_FIJA;
+        this.crearCita();
       } else {
         alert("Es festivo");
-        this.crearCita(3,this.citasForm,f,(TARIFA_FIJA*2));
+        this.cita.date = f;
+        this.cita.tarifa = (TARIFA_FIJA*2);
+        this.crearCita();
       }
     }
   }
@@ -68,20 +72,11 @@ export class AgendarCitaComponent implements OnInit {
     this.holidays = module.getColombiaHolidaysByYear(year);
   }
 
-  public crearCita(id: number,form: FormGroup, fecha: string, tarifa: number){
-    this.cita =  new Cita(
-      id,
-      form.value.name,
-      form.value.lastname,
-      form.value.email,
-      form.value.tel,
-      form.value.city,
-      fecha,
-      tarifa
-    )
+  public crearCita(){
     this.productoServices.guardarCita(this.cita).subscribe((data:any)=>{
       console.log(data);
     });
+    this.citasForm.reset();
   }
 
 }
