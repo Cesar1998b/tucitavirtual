@@ -47,4 +47,4 @@ $app-base-theme: mat-light-theme((
 @import "assets/scss/partials/global";
 @import "assets/scss/partials/buttons";
 html, body { height: 100%; }
-body { margin: 0; padding: 0; background-color: #fff;}
+body { margin: 0; padding: 0; background-color: #fff; overflow-y: hidden;}
