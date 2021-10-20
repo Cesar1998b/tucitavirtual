@@ -1,3 +1,27 @@
-<nav>
+<!-- <nav>
   <a *ngFor="let item of items" [routerLink]="item.url" routerLinkActive="active" class="nav-caption">{{item.nombre}}</a>
-</nav>
+</nav> -->
+<div style="height: 120vh;">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span><a routerLink="/home">TuCita Virtual<mat-icon>spa</mat-icon></a></span>
+      <span class="menu-spacer"></span>
+      <div fxShow="true" fxHide.lt-md>
+        <a *ngFor="let item of items" [routerLink]="item.url" routerLinkActive="active" class="nav-caption">{{item.nombre}}</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list class="nav">
+        <a *ngFor="let item of items" [routerLink]="item.url" routerLinkActive="active" class="nav-caption" (click)="sidenav.toggle()">{{item.nombre}}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill><router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
