@@ -16,10 +16,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, FooterComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -32,7 +33,7 @@ import { HeaderComponent } from './components/header/header.component';
     MatButtonModule,
     FlexLayoutModule
   ],
-  exports: [HeaderComponent],
+  exports: [HeaderComponent, FooterComponent],
   providers: [
     HttpService,
     SecurityGuard,
