@@ -5,14 +5,14 @@ import { AgendarCitaComponent } from './agendar-cita.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ProductoService } from '../../shared/service/producto.service';
+import { CitaService } from '../../shared/service/cita.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('CrearProductoComponent', () => {
   let component: AgendarCitaComponent;
   let fixture: ComponentFixture<AgendarCitaComponent>;
-  let productoService: ProductoService;
+  let citaService: CitaService;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -24,7 +24,7 @@ describe('CrearProductoComponent', () => {
         ReactiveFormsModule,
         FormsModule
       ],
-      providers: [ProductoService, HttpService],
+      providers: [CitaService, HttpService],
     })
     .compileComponents();
   }));
@@ -32,8 +32,8 @@ describe('CrearProductoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AgendarCitaComponent);
     component = fixture.componentInstance;
-    productoService = TestBed.inject(ProductoService);
-    spyOn(productoService, 'guardar').and.returnValue(
+    citaService = TestBed.inject(CitaService);
+    spyOn(citaService, 'guardarCita').and.returnValue(
       of(true)
     );
     fixture.detectChanges();
@@ -47,13 +47,18 @@ describe('CrearProductoComponent', () => {
     expect(component.citasForm.valid).toBeFalsy();
   });
 
-  it('Registrando producto', () => {
+  it('Registrando una cita', () => {
+    const date = new Date();
     expect(component.citasForm.valid).toBeFalsy();
-    component.citasForm.controls.id.setValue('001');
-    component.citasForm.controls.descripcion.setValue('Producto test');
+    component.citasForm.controls.name.setValue('Carlos Antonio');
+    component.citasForm.controls.lastname.setValue('Perez Correa');
+    component.citasForm.controls.email.setValue('antonio@gmail.com');
+    component.citasForm.controls.tel.setValue('3156479876');
+    component.citasForm.controls.city.setValue('Pereira');
+    component.citasForm.controls.date.setValue(date);
     expect(component.citasForm.valid).toBeTruthy();
 
-    component.cerar();
+    component.agendarCita();
 
     // Aca validamos el resultado esperado al enviar la petición
     // TODO adicionar expect

@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { ProductoRoutingModule } from './producto-routing.module';
-import { BorrarProductoComponent } from './components/borrar-producto/borrar-producto.component';
-import { ListarProductoComponent } from './components/listar-producto/listar-producto.component';
+import { ProductoRoutingModule } from './cita-routing.module';
 import { AgendarCitaComponent } from './components/agendar-cita/agendar-cita.component';
-import { ProductoComponent } from './components/producto/producto.component';
-import { ProductoService } from './shared/service/producto.service';
+import { CitaComponent } from './components/cita/cita.component';
+import { CitaService } from './shared/service/cita.service';
 import { SharedModule } from '@shared/shared.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,9 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AgendarCitaComponent,
-    ListarProductoComponent,
-    BorrarProductoComponent,
-    ProductoComponent,
+    CitaComponent
   ],
   imports: [
     ProductoRoutingModule,
@@ -29,6 +25,6 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatButtonModule
   ],
-  providers: [ProductoService, MatDatepickerModule, MatNativeDateModule]
+  providers: [CitaService, MatDatepickerModule, MatNativeDateModule]
 })
 export class ProductoModule { }

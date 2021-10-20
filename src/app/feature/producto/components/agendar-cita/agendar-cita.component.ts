@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ProductoService } from "../../shared/service/producto.service";
+import { CitaService } from "../../shared/service/cita.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Cita } from "../../shared/model/cita";
 
@@ -19,7 +19,7 @@ export class AgendarCitaComponent implements OnInit {
   cita = new Cita();
   holidays: [];
 
-  constructor(protected productoServices: ProductoService) {}
+  constructor(protected citaServices: CitaService) {}
 
   ngOnInit() {
     this.construirFormularioCitas();
@@ -71,7 +71,7 @@ export class AgendarCitaComponent implements OnInit {
   }
 
   public crearCita(){
-    this.productoServices.guardarCita(this.cita);
+    this.citaServices.guardarCita(this.cita);
     this.citasForm.reset();
   }
 
