@@ -1,4 +1,4 @@
-<div class="container">
+<div style="height: 120vh;" class="container">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
@@ -18,8 +18,8 @@
         <a *ngFor="let item of items" [routerLink]="item.url" routerLinkActive="active" class="nav-caption" (click)="sidenav.toggle()">{{item.nombre}}</a>
       </mat-nav-list>
     </mat-sidenav>
-    <!-- <mat-sidenav-content fxFlexFill><router-outlet></router-outlet>
+    <mat-sidenav-content fxFlexFill><router-outlet></router-outlet>
       <app-footer></app-footer>
-    </mat-sidenav-content> -->
+    </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
