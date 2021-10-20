@@ -1,4 +1,4 @@
-<div style="height: 120vh;">
+<div style="height: 120vh;" class="container">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
@@ -19,6 +19,7 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill><router-outlet></router-outlet>
+      <app-footer></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
