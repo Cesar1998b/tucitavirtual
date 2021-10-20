@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   redirectToCitas(){
-    this.route.navigate(['/producto']);
+    this.route.navigate(['/cita']);
   }
 
 }
