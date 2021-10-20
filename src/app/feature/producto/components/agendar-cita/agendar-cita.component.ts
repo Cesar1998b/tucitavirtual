@@ -16,8 +16,8 @@ const TARIFA_FIJA = 150000;
 export class AgendarCitaComponent implements OnInit {
   citasForm: FormGroup;
   today: Date = new Date();
-  holidays: [];
   cita = new Cita();
+  holidays: [];
 
   constructor(protected productoServices: ProductoService) {}
 
@@ -53,13 +53,12 @@ export class AgendarCitaComponent implements OnInit {
       this.getHolidays(fecha.getFullYear());
       let f = fecha.toISOString().substring(0, 10);
       let holiday = this.holidays.find((item) => item["holiday"] == f);
+      this.cita.date = f;
       if (holiday === undefined) {
-        this.cita.date = f;
         this.cita.tarifa = TARIFA_FIJA;
         this.crearCita();
       } else {
         alert("Es festivo");
-        this.cita.date = f;
         this.cita.tarifa = (TARIFA_FIJA*2);
         this.crearCita();
       }
@@ -72,9 +71,7 @@ export class AgendarCitaComponent implements OnInit {
   }
 
   public crearCita(){
-    this.productoServices.guardarCita(this.cita).subscribe((data:any)=>{
-      console.log(data);
-    });
+    this.productoServices.guardarCita(this.cita);
     this.citasForm.reset();
   }
 
