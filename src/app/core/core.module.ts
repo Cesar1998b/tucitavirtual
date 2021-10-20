@@ -4,8 +4,6 @@ import { SecurityGuard } from './guard/security.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/token-interceptor';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpService } from './services/http.service';
 import { ManejadorError } from './interceptor/manejador-error';
 import { RouterModule } from '@angular/router';
@@ -17,10 +15,11 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
-  declarations: [ToolbarComponent, NavbarComponent],
+  declarations: [HeaderComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -33,7 +32,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatButtonModule,
     FlexLayoutModule
   ],
-  exports: [ToolbarComponent, NavbarComponent],
+  exports: [HeaderComponent],
   providers: [
     HttpService,
     SecurityGuard,
