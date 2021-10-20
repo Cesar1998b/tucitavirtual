@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { HttpService } from "@core-service/http.service";
-import { environment } from "src/environments/environment";
-import { Cita } from "../model/cita";
+import { Injectable } from '@angular/core';
+import { HttpService } from '@core-service/http.service';
+import { environment } from 'src/environments/environment';
+import { Cita } from '../model/cita';
 
 @Injectable()
 export class CitaService {
@@ -34,7 +34,7 @@ export class CitaService {
     return this.http.doPost<Cita, boolean>(
       `${environment.endpoint2}citas`,
       cita,
-      this.http.optsName("crear cita")
+      this.http.optsName('crear cita')
     );
   }
 

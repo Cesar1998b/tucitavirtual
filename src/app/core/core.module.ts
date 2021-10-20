@@ -9,15 +9,14 @@ import { ManejadorError } from './interceptor/manejador-error';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],
@@ -31,7 +30,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MatListModule,
     MatIconModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   exports: [HeaderComponent, FooterComponent],
   providers: [
@@ -39,7 +38,7 @@ import { FooterComponent } from './components/footer/footer.component';
     SecurityGuard,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: ErrorHandler, useClass: ManejadorError }
-  ]
+    { provide: ErrorHandler, useClass: ManejadorError },
+  ],
 })
-export class CoreModule { }
+export class CoreModule {}

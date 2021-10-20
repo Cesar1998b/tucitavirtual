@@ -19,6 +19,16 @@
       "date": "2021-10-26",
       "tarifa": 150000,
       "id": 2
+    },
+    {
+      "nameUser": "Valentina",
+      "lastNameUser": "Rojas Morera",
+      "emailUser": "valentina2000@gmail.com",
+      "telUser": 3156468519,
+      "cityUser": "Cali",
+      "date": "2021-10-29",
+      "tarifa": 150000,
+      "id": 3
     }
   ]
 }

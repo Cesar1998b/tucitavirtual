@@ -10,9 +10,11 @@ describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
   let redirectPage;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
+      declarations: [
+        HomeComponent
+      ],
       imports: [
         RouterTestingModule,
         MatIconModule,
