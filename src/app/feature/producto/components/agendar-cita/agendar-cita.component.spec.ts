@@ -14,7 +14,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 
-describe('CrearProductoComponent', () => {
+describe('AgendarCitaComponent', () => {
   let component: AgendarCitaComponent;
   let fixture: ComponentFixture<AgendarCitaComponent>;
   let citaService: CitaService;
@@ -95,7 +95,7 @@ describe('CrearProductoComponent', () => {
   });
 
   it('Registrando una cita y reseteando el formulario', () => {
-    const date = new Date('2021/10/20');
+    const date = new Date('2021/11/25');
     expect(component.citasForm.valid).toBeFalsy();
     component.citasForm.controls.name.setValue('Carlos Antonio');
     component.citasForm.controls.lastname.setValue('Perez Correa');
