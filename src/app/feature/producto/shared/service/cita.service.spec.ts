@@ -10,7 +10,7 @@ import { Cita } from './../model/cita';
 describe('CitaService', () => {
   let httpMock: HttpTestingController;
   let service: CitaService;
-  const apiEndpointCitas = `${environment.endpoint2}citas`;
+  const apiEndpointCitas = `${environment.endpoint}citas`;
 
   beforeEach(() => {
     const injector = TestBed.configureTestingModule({
