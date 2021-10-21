@@ -46,33 +46,35 @@ pipeline {
       }
     }
 
-    stage('Install') {
+    stage('NPM Install') {
       steps {
-        sh 'npm install'
+        withEnv(['NPM_CONFIG_LOGLEVEL=warn']) {
+          sh 'npm install'
+        }
       }
     }
 
-    stage('Tests') {
+    stage('Build') {
       steps {
-        sh 'npm run test'
+        sh 'ng build --configuration production --progress=false'
       }
     }
 
+    // stage('test') {
+    //   steps {
+    //     sh 'ng test'
+    //   }
+    // }
 
-    stage('Sonar Scanner Coverage') {
+    stage('Static Code Analysis') {
       steps{
-        echo '------------>Análisis de código estático<------------'
-        withSonarQubeEnv('Sonar') {
-          sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
-        }
+          echo '------------>Análisis de código estático<------------'
+          withSonarQubeEnv('Sonar') {
+            sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
+          }
       }
     }
 
-        stage('Build'){
-            steps {
-                sh 'ng build --prod '
-            }
-        }
   }
 
   post {
@@ -81,13 +83,20 @@ pipeline {
     }
     success {
       echo 'This will run only if successful'
+      mail (to: 'david.botina@ceiba.com.co',subject: "Success Pipeline:${currentBuild.fullDisplayName}",body: "Success build ${env.BUILD_URL}")
     }
     failure {
       echo 'This will run only if failed'
       mail (to: 'david.botina@ceiba.com.co', subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}")
     }
-
+    unstable {
+      echo 'This will run only if the run was marked as unstable'
+    }
+    changed {
+      echo 'This will run only if the state of the Pipeline has changed'
+      echo 'For example, if the Pipeline was previously failing but is now successful'
+    }
   }
-}
 
+}
 
