@@ -48,3 +48,10 @@ $app-base-theme: mat-light-theme((
 @import "assets/scss/partials/buttons";
 html, body { height: 100%; }
 body { margin: 0; padding: 0; background-color: #fff; overflow-y: hidden;}
+
+
+@media only screen and (max-width: 1300px) {
+  body{
+    overflow-y: scroll;
+  }
+}

@@ -8,3 +8,9 @@
   text-align: center;
   position: fixed;
 }
+
+@media only screen and (max-width: 1300px) {
+  .footer{
+    display: none;
+  }
+}
