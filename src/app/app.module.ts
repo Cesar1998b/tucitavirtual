@@ -8,8 +8,7 @@ import { ProductoModule } from '@producto/cita.module';
 import { CoreModule } from '@core/core.module';
 import { CookieService } from 'ngx-cookie-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import {MatButtonModule} from '@angular/material/button';
     ProductoModule,
     CoreModule,
     BrowserAnimationsModule,
-    MatIconModule,
-    MatButtonModule
+    MaterialModule
   ],
   providers: [CookieService],
     bootstrap: [AppComponent],
