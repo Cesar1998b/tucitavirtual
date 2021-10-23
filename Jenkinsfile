@@ -54,17 +54,20 @@ pipeline {
       }
     }
 
-    stage('Build') {
-      steps {
-        sh 'ng build --configuration production --progress=false'
+    stage('Test') {
+      steps{
+        echo "------------>Test<------------"
+        sh 'npm run test -- --watch=false --browsers ChromeHeadless'
       }
     }
 
-    // stage('test') {
-    //   steps {
-    //     sh 'ng test'
-    //   }
-    // }
+    stage('Lint') {
+      steps {
+          echo "------------>Lint<------------"
+          sh 'npm run lint'
+        }
+      }
+    }
 
     stage('Static Code Analysis') {
       steps{
@@ -72,6 +75,13 @@ pipeline {
           withSonarQubeEnv('Sonar') {
             sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
           }
+      }
+    }
+
+    stage('Build') {
+      steps {
+        echo "------------>Build<------------"
+        sh 'npm run build'
       }
     }
 
