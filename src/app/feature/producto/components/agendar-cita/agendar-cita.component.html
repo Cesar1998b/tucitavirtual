@@ -4,7 +4,7 @@
   <form [formGroup]="citasForm" novalidate>
     <div class="row">
       <mat-form-field appearance="outline">
-        <mat-label>Nombres</mat-label>
+        <mat-label>Nombre Completo</mat-label>
         <input
           matInput
           type="text"
@@ -12,22 +12,8 @@
           name="name"
           class="form-control"
           formControlName="name"
-          [(ngModel)]="cita.nameUser"
         />
-        <mat-error validar>Por favor ingrese su nombre</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Apellidos</mat-label>
-        <input
-          matInput
-          type="text"
-          id="lastname"
-          name="lastname"
-          class="form-control"
-          formControlName="lastname"
-          [(ngModel)]="cita.lastNameUser"
-        />
-        <mat-error validar>Por favor ingrese su apellido</mat-error>
+        <mat-error validar>Por favor ingrese su nombre completo</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
@@ -41,7 +27,6 @@
           class="form-control"
           placeholder="pat@example.com"
           formControlName="email"
-          [(ngModel)]="cita.emailUser"
         />
         <mat-error validar>Por favor ingrese un email valido</mat-error>
       </mat-form-field>
@@ -54,37 +39,22 @@
           name="telefono"
           class="form-control"
           formControlName="tel"
-          [(ngModel)]="cita.telUser"
         />
         <mat-error validar>Por favor ingrese su teléfono</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
-      <mat-form-field appearance="outline">
-        <mat-label>Ciudad</mat-label>
-        <input
-          matInput
-          type="text"
-          id="ciudad"
-          name="ciudad"
-          class="form-control"
-          formControlName="city"
-          [(ngModel)]="cita.cityUser"
-        />
-        <mat-error validar>Por favor ingrese su ciudad</mat-error>
-      </mat-form-field>
       <mat-form-field class="date" appearance="outline">
         <mat-label>Fecha</mat-label>
         <input
           matInput
           [matDatepicker]="picker"
-          [min]="today"
+          [min]="fechaActual"
           id="date"
           name="date"
           placeholder="Fecha"
           class="form-control"
           formControlName="date"
-          [(ngModel)]="cita.date"
         />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
