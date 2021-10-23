@@ -1,34 +1,36 @@
 {
   "citas": [
     {
-      "nameUser": "Cesar David",
-      "lastNameUser": "Botina",
-      "emailUser": "sadadasdada@gmail.com",
-      "telUser": 3156468519,
-      "cityUser": "Cali",
-      "date": "2021-10-21",
-      "tarifa": 150000,
+      "name": "Cesar David",
+      "email": "sadadasdada@gmail.com",
+      "tel": 3156468519,
+      "date": "2021-11-01T05:00:00.000Z",
+      "tarifa": 300000,
       "id": 1
     },
     {
-      "nameUser": "Felipe",
-      "lastNameUser": "Ortiz",
-      "emailUser": "felipe@gmail.com",
-      "telUser": 3128975463,
-      "cityUser": "Bogota",
-      "date": "2021-10-26",
+      "name": "Felipe Ortiz",
+      "email": "felipe@gmail.com",
+      "tel": 3116758743,
+      "date": "2021-11-25T05:00:00.000Z",
       "tarifa": 150000,
       "id": 2
     },
     {
-      "nameUser": "Valentina",
-      "lastNameUser": "Rojas Morera",
-      "emailUser": "valentina2000@gmail.com",
-      "telUser": 3156468519,
-      "cityUser": "Cali",
-      "date": "2021-10-29",
-      "tarifa": 150000,
+      "name": "Valentina Rojas",
+      "email": "valentina2000@gmail.com",
+      "tel": 3165478634,
+      "date": "2021-11-01T05:00:00.000Z",
+      "tarifa": 300000,
       "id": 3
+    },
+    {
+      "name": "Yina Chacon",
+      "email": "yina.isa@gmail.com",
+      "tel": 3198762731,
+      "date": "2021-11-01T05:00:00.000Z",
+      "tarifa": 300000,
+      "id": 4
     }
   ]
 }
