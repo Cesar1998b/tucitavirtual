@@ -28,12 +28,10 @@ describe('CitaService', () => {
 
   it('Creación de Cita, se debería crear una cita de forma satisfactoria', () => {
     const dummyCita = new Cita();
-    dummyCita.nameUser = 'Carlos Antonio';
-    dummyCita.lastNameUser = 'Carlos Antonio';
-    dummyCita.emailUser = 'Carlos Antonio';
-    dummyCita.telUser = 3156467654;
-    dummyCita.cityUser = 'Carlos Antonio';
-    dummyCita.date = '2021-10-20';
+    dummyCita.name = 'Carlos Antonio';
+    dummyCita.email = 'cesarbotina98@gmail.com';
+    dummyCita.tel = 3156467654;
+    dummyCita.date = new Date('2021/11/1');
     dummyCita.tarifa = 150000;
     service.guardarCita(dummyCita).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);

@@ -1,10 +1,8 @@
-export class Cita {
+export interface Cita {
     id: number;
-    nameUser: string;
-    lastNameUser: string;
-    emailUser: string;
-    telUser: number;
-    cityUser: string;
-    date: string;
+    name: string;
+    email: string;
+    tel: number;
+    date: Date;
     tarifa: number;
 }
