@@ -67,7 +67,7 @@ pipeline {
           sh 'npm run lint'
         }
       }
-    }
+
 
     stage('Static Code Analysis') {
       steps{
@@ -107,6 +107,6 @@ pipeline {
       echo 'For example, if the Pipeline was previously failing but is now successful'
     }
   }
-
 }
+
 
