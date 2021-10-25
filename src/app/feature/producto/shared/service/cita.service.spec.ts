@@ -1,24 +1,22 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-
 import { CitaService } from './cita.service';
 import { environment } from 'src/environments/environment';
 import { HttpService } from 'src/app/core/services/http.service';
-import { HttpResponse } from '@angular/common/http';
-import { Cita } from './../model/cita';
+import { of } from 'rxjs';
+import { CitaMock } from 'src/test/utils/mocks/cita/cita.mock';
 
 describe('CitaService', () => {
-  let httpMock: HttpTestingController;
   let service: CitaService;
-  const apiEndpointCitas = `${environment.endpoint}citas`;
+  let http: HttpService;
 
   beforeEach(() => {
     const injector = TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [CitaService, HttpService]
     });
-    httpMock = injector.inject(HttpTestingController);
     service = TestBed.inject(CitaService);
+    http = injector.inject(HttpService);
   });
 
   it('should be created', () => {
@@ -26,18 +24,23 @@ describe('CitaService', () => {
     expect(productService).toBeTruthy();
   });
 
-  it('Creación de Cita, se debería crear una cita de forma satisfactoria', () => {
-    const dummyCita = new Cita();
-    dummyCita.name = 'Carlos Antonio';
-    dummyCita.email = 'cesarbotina98@gmail.com';
-    dummyCita.tel = 3156467654;
-    dummyCita.date = new Date('2021/11/1');
-    dummyCita.tarifa = 150000;
-    service.guardarCita(dummyCita).subscribe((respuesta) => {
-      expect(respuesta).toEqual(true);
-    });
-    const req = httpMock.expectOne(apiEndpointCitas);
-    expect(req.request.method).toBe('POST');
-    req.event(new HttpResponse<boolean>({body: true}));
+  it('Debería retornar un Observable<boolean> cuando se hace una petición post en Cita', () => {
+    const spyDoPost = spyOn(http, 'doPost').and.returnValue(of(true));
+    const esFestivo = false;
+
+    service.guardarCita(CitaMock, esFestivo).subscribe((res: boolean) => {
+      expect(res).toBeTruthy();
+    })
+
+    expect(spyDoPost).toHaveBeenCalled();
   });
+
+  it('Debería retornar la tarifa doble ya que se agendo cita un festivo', () => {
+    const esFestivo = true;
+    const expected = environment.tarifaFija * 2;
+    const price = service.calcTarifaCitas(esFestivo);
+
+    expect(price).toEqual(expected);
+  });
+
 });
