@@ -33,7 +33,7 @@ export class CitaService {
   //   );
   // }
 
-  public guardarCita(cita: Cita, esFestivo: Boolean) {
+  public guardarCita(cita: Cita, esFestivo: boolean) {
     cita.tarifa = this.calcTarifaCitas(esFestivo);
     return this.http.doPost<Cita, boolean>(
       `${environment.endpoint}citas`,
@@ -42,13 +42,13 @@ export class CitaService {
     );
   }
 
-  obtenerFestivos(year: Number){
+  obtenerFestivos(year: number){
     const moduloFestivos = require('colombia-holidays');
     return this.festivos = moduloFestivos.getColombiaHolidaysByYear(year);
   }
 
-  calcTarifaCitas(esFestivo: Boolean){
-    if(!esFestivo){
+  calcTarifaCitas(esFestivo: boolean){
+    if (!esFestivo) {
       return environment.tarifaFija;
     }else{
       return environment.tarifaFija * 2;

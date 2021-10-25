@@ -41,7 +41,7 @@ export class AgendarCitaComponent implements OnInit {
     return this.citasForm.value;
   }
 
-  get fechaToString(): String{
+  get fechaToString(): string{
     return this.cita.date.toISOString().substring(0, 10);
   }
 
@@ -50,30 +50,30 @@ export class AgendarCitaComponent implements OnInit {
     if (this.cita.date.getDay() === 0 || this.cita.date.getDay() === 6) {
       alert('No se puede agendar cita sábados o domingos');
     } else {
-      if(this.verificarFestivo){
+      if (this.verificarFestivo) {
         alert('Es festivo');
         this.crearCita(true);
       }else{
-        this.crearCita(false)
+        this.crearCita(false);
       }
     }
   }
 
-  crearCita(esFestivo: Boolean){
+  crearCita(esFestivo: boolean){
     this.citaServices.guardarCita(this.cita, esFestivo).subscribe((data) => {
       console.log(data);
     });
     this.citasForm.reset();
   }
 
-  obtenerFestivos(year: Number){
+  obtenerFestivos(year: number){
     this.festivos = this.citaServices.obtenerFestivos(year);
   }
 
-  verificarFestivo(): Boolean{
+  verificarFestivo(): boolean{
     this.obtenerFestivos(this.cita.date.getFullYear());
     const esFestivo = this.festivos.find((item) => item[festivoKey] === this.fechaToString);
-    if(esFestivo === undefined){
+    if (esFestivo === undefined) {
       return false;
     }else{
       return true;

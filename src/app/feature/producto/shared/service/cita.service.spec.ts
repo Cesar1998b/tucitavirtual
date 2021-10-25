@@ -30,7 +30,7 @@ describe('CitaService', () => {
 
     service.guardarCita(CitaMock, esFestivo).subscribe((res: boolean) => {
       expect(res).toBeTruthy();
-    })
+    });
 
     expect(spyDoPost).toHaveBeenCalled();
   });

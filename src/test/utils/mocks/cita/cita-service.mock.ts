@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 export class CitaServiceMock {
 
   guardarCita(cita: Cita) {
-    if(cita){
+    if (cita) {
       return of(true);
     }
   }
