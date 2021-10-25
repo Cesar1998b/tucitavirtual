@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cita',
@@ -8,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CitaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit() {
+  }
+
+  redirectToCitas(): void{
+    this.route.navigate(['/cita/crear']);
   }
 
 }

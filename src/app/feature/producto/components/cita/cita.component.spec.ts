@@ -30,4 +30,13 @@ describe('CitaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Redirige al cita al dar click en en boton agendar cita', () => {
+    const btnAgendarCita = fixture.debugElement.nativeElement.querySelector('button');
+    const spyRedirect = spyOn(component, 'redirectToCitas').and.callFake(() => {});
+
+    btnAgendarCita.click();
+
+    expect(spyRedirect).toHaveBeenCalled();
+  });
 });

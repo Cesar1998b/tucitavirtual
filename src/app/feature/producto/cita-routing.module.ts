@@ -8,17 +8,17 @@ const routes: Routes = [
   {
     path: '',
     component: CitaComponent,
-    children: [
-      {
-        path: 'crear',
-        component: AgendarCitaComponent
-      },
-    ]
-  }
+    pathMatch: 'full'
+  },
+  {
+    path: 'crear',
+    component: AgendarCitaComponent
+  },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProductoRoutingModule { }
+export class CitaRoutingModule { }

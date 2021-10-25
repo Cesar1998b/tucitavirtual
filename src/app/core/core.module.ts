@@ -1,6 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SecurityGuard } from './guard/security.guard';
 import { HttpService } from './services/http.service';
 import { ManejadorError } from './interceptor/manejador-error';
 import { RouterModule } from '@angular/router';
@@ -24,7 +23,6 @@ import { FooterComponent } from './components/footer/footer.component';
   exports: [HeaderComponent, FooterComponent],
   providers: [
     HttpService,
-    SecurityGuard,
     { provide: ErrorHandler, useClass: ManejadorError },
   ],
 })
