@@ -42,7 +42,8 @@ export class AgendarCitaComponent implements OnInit {
   }
 
   get fechaToString(): string{
-    return this.cita.date.toISOString().substring(0, 10);
+    const numeroLimite = 10;
+    return this.cita.date.toISOString().substring(0, numeroLimite);
   }
 
   agendarCita(){
@@ -78,6 +79,12 @@ export class AgendarCitaComponent implements OnInit {
     }else{
       return true;
     }
+  }
+
+  mostrarMensajeError(controlName: string) {
+    return (
+      this.citasForm.get(controlName).invalid && this.citasForm.get(controlName).touched
+    );
   }
 
 }

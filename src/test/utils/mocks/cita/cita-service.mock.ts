@@ -9,4 +9,10 @@ export class CitaServiceMock {
     }
   }
 
+  obtenerFestivos(year: number) {
+    if (year !== 0) {
+      return of(true);
+    }
+  }
+
 }

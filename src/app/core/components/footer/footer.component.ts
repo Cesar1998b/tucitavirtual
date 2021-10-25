@@ -15,13 +15,4 @@ export class FooterComponent implements OnInit {
     this.anio = new Date().getFullYear();
   }
 
-  fixPosicion(): boolean {
-    const container = document.getElementById('container');
-    const height = container.offsetHeight;
-    if (height < (screen.height * 0.8)) {
-      return true;
-    }
-    return false;
-  }
-
 }

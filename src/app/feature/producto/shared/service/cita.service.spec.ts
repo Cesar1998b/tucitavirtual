@@ -4,7 +4,10 @@ import { CitaService } from './cita.service';
 import { environment } from 'src/environments/environment';
 import { HttpService } from 'src/app/core/services/http.service';
 import { of } from 'rxjs';
-import { CitaMock } from 'src/test/utils/mocks/cita/cita.mock';
+import {
+  CitaMock,
+  festivosMock
+} from 'src/test/utils/mocks/cita/cita.mock';
 
 describe('CitaService', () => {
   let service: CitaService;
@@ -33,6 +36,13 @@ describe('CitaService', () => {
     });
 
     expect(spyDoPost).toHaveBeenCalled();
+  });
+
+  it('Debería retornar los festivos según el año', () => {
+    const anio = 2017;
+    const obtenerFestivos = service.obtenerFestivos(anio);
+
+    expect(obtenerFestivos).toEqual(festivosMock);
   });
 
   it('Debería retornar la tarifa doble ya que se agendo cita un festivo', () => {

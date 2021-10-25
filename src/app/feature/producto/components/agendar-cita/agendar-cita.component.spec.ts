@@ -35,8 +35,8 @@ describe('AgendarCitaComponent', () => {
           MaterialModule
         ],
         providers: [
+          HttpService,
           { provide: CitaService, useClass: CitaServiceMock },
-          { provide: HttpService }
         ],
       }).compileComponents();
     })
@@ -46,7 +46,6 @@ describe('AgendarCitaComponent', () => {
     fixture = TestBed.createComponent(AgendarCitaComponent);
     component = fixture.componentInstance;
     citaService = TestBed.inject(CitaService);
-    // spyOn(citaService, 'guardarCita').and.returnValue(of(true));
     fixture.detectChanges();
   });
 
@@ -108,7 +107,6 @@ describe('AgendarCitaComponent', () => {
     component.citasForm.patchValue(agendarCitaFinDeSemanaMock);
 
     component.agendarCita();
-    fixture.detectChanges();
 
     expect(component.citasForm.valid).toBeTruthy();
   });
@@ -118,7 +116,6 @@ describe('AgendarCitaComponent', () => {
 
     component.citasForm.patchValue(agendarCitaEnFestivosMock);
     component.agendarCita();
-    fixture.detectChanges();
 
     expect(spyGuardar).toHaveBeenCalled();
     expect(component.citasForm.valid).toBeFalsy();
@@ -129,9 +126,24 @@ describe('AgendarCitaComponent', () => {
 
     component.citasForm.patchValue(CitaMock);
     component.agendarCita();
-    fixture.detectChanges();
 
     expect(spyGuardar).toHaveBeenCalled();
-    expect(component.citasForm.valid).toBeFalsy();
+    expect(component.citasForm.valid).toBeFalse();
   });
+
+  it('Obteniendo los festivos de acuerdo a un año', () => {
+    const anio = 2021;
+    const spyFestivos = spyOn(citaService, 'obtenerFestivos').and.callThrough();
+
+    component.obtenerFestivos(anio);
+
+    expect(spyFestivos).toHaveBeenCalled();
+  });
+
+  it('Debe mostrar el mensaje de error', () => {
+    const control = 'name';
+    component.citasForm.markAllAsTouched();
+    expect(component.mostrarMensajeError(control)).toBeTrue();
+  });
+
 });
