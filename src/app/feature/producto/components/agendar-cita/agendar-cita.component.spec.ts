@@ -1,5 +1,4 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
 import { AgendarCitaComponent } from './agendar-cita.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -8,11 +7,14 @@ import { CitaService } from '../../shared/service/cita.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button';
+import { MaterialModule } from 'src/app/material.module';
+import {
+  CitaMock,
+  agendarCitaFinDeSemanaMock,
+  agendarCitaEnFestivosMock
+ } from 'src/test/utils/mocks/cita/cita.mock';
+import { CitaServiceMock } from 'src/test/utils/mocks/cita/cita-service.mock';
+
 
 describe('AgendarCitaComponent', () => {
   let component: AgendarCitaComponent;
@@ -30,13 +32,12 @@ describe('AgendarCitaComponent', () => {
           ReactiveFormsModule,
           FormsModule,
           BrowserAnimationsModule,
-          MatInputModule,
-          MatFormFieldModule,
-          MatDatepickerModule,
-          MatNativeDateModule,
-          MatButtonModule,
+          MaterialModule
         ],
-        providers: [CitaService, HttpService],
+        providers: [
+          { provide: CitaService, useClass: CitaServiceMock },
+          { provide: HttpService }
+        ],
       }).compileComponents();
     })
   );
@@ -45,8 +46,21 @@ describe('AgendarCitaComponent', () => {
     fixture = TestBed.createComponent(AgendarCitaComponent);
     component = fixture.componentInstance;
     citaService = TestBed.inject(CitaService);
-    spyOn(citaService, 'guardarCita').and.returnValue(of(true));
+    // spyOn(citaService, 'guardarCita').and.returnValue(of(true));
     fixture.detectChanges();
+  });
+
+  it('Se creo el componente AgendarCita', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('Se creo el formulario de Citas', () => {
+    expect(component.citasForm.value).toEqual({
+      name: '',
+      email: '',
+      tel: '',
+      date: '',
+    });
   });
 
   it('Los campos están vacíos y botón de agendar cita deshabilitado', () => {
@@ -77,16 +91,21 @@ describe('AgendarCitaComponent', () => {
     expect(errors[emailKey]).toBeFalsy();
   });
 
-  it('Registrando una cita, alerta por elegir un sábado o domingo', () => {
-    const date = new Date('2021/10/23');
+  it('Retornará falso cuando el formulario es invalido', () => {
+    const infoInvalida = {
+      name: 1,
+      email: 'cesarbotina@',
+      tel: null,
+      date: '',
+    };
+
+    component.citasForm.patchValue(infoInvalida);
     expect(component.citasForm.valid).toBeFalsy();
-    component.citasForm.controls.name.setValue('Carlos Antonio');
-    component.citasForm.controls.lastname.setValue('Perez Correa');
-    component.citasForm.controls.email.setValue('antonio@gmail.com');
-    component.citasForm.controls.tel.setValue('3156479876');
-    component.citasForm.controls.city.setValue('Pereira');
-    component.citasForm.controls.date.setValue(date);
-    expect(component.citasForm.valid).toBeTruthy();
+
+  });
+
+  it('Registrando una cita, alerta por elegir un sábado o domingo', () => {
+    component.citasForm.patchValue(agendarCitaFinDeSemanaMock);
 
     component.agendarCita();
     fixture.detectChanges();
@@ -94,19 +113,25 @@ describe('AgendarCitaComponent', () => {
     expect(component.citasForm.valid).toBeTruthy();
   });
 
-  it('Registrando una cita y reseteando el formulario', () => {
-    const date = new Date('2021/11/25');
-    expect(component.citasForm.valid).toBeFalsy();
-    component.citasForm.controls.name.setValue('Carlos Antonio');
-    component.citasForm.controls.lastname.setValue('Perez Correa');
-    component.citasForm.controls.email.setValue('antonio@gmail.com');
-    component.citasForm.controls.tel.setValue('3156479876');
-    component.citasForm.controls.city.setValue('Pereira');
-    component.citasForm.controls.date.setValue(date);
-    expect(component.citasForm.valid).toBeTruthy();
+  it('Registrando una cita, alerta por elegir un festivo y aplica tarifa doble', () => {
+    const spyGuardar = spyOn(citaService, 'guardarCita').and.callThrough();
 
+    component.citasForm.patchValue(agendarCitaEnFestivosMock);
     component.agendarCita();
+    fixture.detectChanges();
 
+    expect(spyGuardar).toHaveBeenCalled();
+    expect(component.citasForm.valid).toBeFalsy();
+  });
+
+  it('Registrando una cita día de semana y reseteando el formulario', () => {
+    const spyGuardar = spyOn(citaService, 'guardarCita').and.callThrough();
+
+    component.citasForm.patchValue(CitaMock);
+    component.agendarCita();
+    fixture.detectChanges();
+
+    expect(spyGuardar).toHaveBeenCalled();
     expect(component.citasForm.valid).toBeFalsy();
   });
 });
