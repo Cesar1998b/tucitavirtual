@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  redirectToCitas(){
+  redirectToCitas(): void{
     this.route.navigate(['/cita']);
   }
 

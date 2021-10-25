@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CitaService } from '../../shared/service/cita.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AlertaService } from '@shared/services/alerta.service';
 import { Cita } from './../../shared/model/cita';
 
 const LONGITUD_MINIMA_PERMITIDA_TEXTO = 3;
@@ -18,7 +19,7 @@ export class AgendarCitaComponent implements OnInit {
   fechaActual: Date = new Date();
   festivos: [];
 
-  constructor(protected citaServices: CitaService) {}
+  constructor(protected citaServices: CitaService, private alertaService: AlertaService) { }
 
   ngOnInit() {
     this.construirFormularioCitas();
@@ -49,10 +50,10 @@ export class AgendarCitaComponent implements OnInit {
   agendarCita(){
     this.cita.date.setDate(this.cita.date.getDate() + 1);
     if (this.cita.date.getDay() === 0 || this.cita.date.getDay() === 6) {
-      alert('No se puede agendar cita sábados o domingos');
+      this.alertaService.alertaInformación('Información', 'Su cita no se puede agendar un sábado o domingo. Por favor revisar la fecha.');
     } else {
       if (this.verificarFestivo) {
-        alert('Es festivo');
+        this.alertaService.alertaInformación('Información', `Su cita será agendada para el día ${this.cita.date} la cuál es festivo y se aplicará tarifa doble.`);
         this.crearCita(true);
       }else{
         this.crearCita(false);
@@ -61,8 +62,8 @@ export class AgendarCitaComponent implements OnInit {
   }
 
   crearCita(esFestivo: boolean){
-    this.citaServices.guardarCita(this.cita, esFestivo).subscribe((data) => {
-      console.log(data);
+    this.citaServices.guardarCita(this.cita, esFestivo).subscribe(() => {
+      this.alertaService.alertaExito();
     });
     this.citasForm.reset();
   }
