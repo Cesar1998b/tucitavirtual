@@ -16,7 +16,7 @@ export class AlertaService {
     });
   }
 
-  public alertaInformación(titulo: string, texto: string) {
+  public alertaInformacion(titulo: string, texto: string) {
     return Swal.fire({
       title: titulo,
       text: texto,

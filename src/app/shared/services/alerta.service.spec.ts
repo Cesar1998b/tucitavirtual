@@ -22,8 +22,8 @@ describe('AlertaService', () => {
   it('Mostrar sweetalert Información', () => {
     const titulo = 'Información';
     const text = 'Su cita no se ha podido agendar';
-    const spynToastDeleteSucces = spyOn(service, 'alertaInformación').and.callThrough();
-    service.alertaInformación(titulo, text);
+    const spynToastDeleteSucces = spyOn(service, 'alertaInformacion').and.callThrough();
+    service.alertaInformacion(titulo, text);
     expect(spynToastDeleteSucces).toHaveBeenCalled();
   });
 

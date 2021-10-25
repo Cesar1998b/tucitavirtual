@@ -50,10 +50,10 @@ export class AgendarCitaComponent implements OnInit {
   agendarCita(){
     this.cita.date.setDate(this.cita.date.getDate() + 1);
     if (this.cita.date.getDay() === 0 || this.cita.date.getDay() === 6) {
-      this.alertaService.alertaInformación('Información', 'Su cita no se puede agendar un sábado o domingo. Por favor revisar la fecha.');
+      this.alertaService.alertaInformacion('Información', 'Su cita no se puede agendar un sábado o domingo. Por favor revisar la fecha.');
     } else {
       if (this.verificarFestivo) {
-        this.alertaService.alertaInformación('Información', `Su cita será agendada para el día ${this.cita.date} la cuál es festivo y se aplicará tarifa doble.`);
+        this.alertaService.alertaInformacion('Información', `Su cita será agendada para el día ${this.cita.date} la cuál es festivo y se aplicará tarifa doble.`);
         this.crearCita(true);
       }else{
         this.crearCita(false);
