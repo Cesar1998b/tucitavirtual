@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { TrackByPipe } from './pipe/track-by.pipe';
+import { FilterUserByNamePipe } from './pipe/filter-user-by-name.pipe';
 
 @NgModule({
   declarations: [
-    TrackByPipe
+    FilterUserByNamePipe
   ],
   imports: [ReactiveFormsModule, FormsModule],
   exports: [
@@ -14,7 +14,7 @@ import { TrackByPipe } from './pipe/track-by.pipe';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    TrackByPipe
+    FilterUserByNamePipe
   ]
 })
 export class SharedModule { }

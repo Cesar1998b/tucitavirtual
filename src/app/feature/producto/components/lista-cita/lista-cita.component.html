@@ -3,6 +3,15 @@
     Agendar nueva cita
   </button>
 </section>
+
+<div class="row">
+  <div class="col">
+    <div class="c-search">
+      <input type="text" class="form-control" name="filtroUsuario" placeholder="Buscar Usuario..." [(ngModel)]="filtroUsuario" id="filtro-usuario">
+    </div>
+  </div>
+</div>
+
 <section class="lista-cita__table">
   <section class="table-container">
     <table class="table" id="cita-list__table">
@@ -15,7 +24,7 @@
         <th></th>
       </thead>
       <tbody>
-        <tr *ngFor="let cita of citas | async">
+        <tr *ngFor="let cita of citas | async | filterUser:filtroUsuario">
           <td>{{ cita.date | date }}</td>
           <td>{{ cita.name }}</td>
           <td>{{ cita.email }}</td>

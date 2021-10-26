@@ -13,6 +13,7 @@ export class ListaCitaComponent implements OnInit {
 
   nombresColumnas: string[] = ['date','name','email','tel','tarifa','borrar'];
   citas: Observable<Cita[]>;
+  filtroUsuario: string = '';
 
   constructor(protected citaServices: CitaService, private alertaService: AlertaService) { }
 
