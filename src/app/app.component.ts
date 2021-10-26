@@ -11,7 +11,8 @@ export class AppComponent {
   title = 'app-base';
   public items: MenuItem[] = [
     { url: '/cita', nombre: 'Inicio' },
-    { url: '/cita/crear', nombre: 'Agendar Cita' }
+    { url: '/cita/crear', nombre: 'Agendar Cita' },
+    { url: '/cita/lista', nombre: 'Mis Citas' }
   ];
 
 
