@@ -7,6 +7,26 @@ export const CitaMock = {
   tarifa: null
 };
 
+export const CitaArrayMock = [
+  {
+    id: 1,
+    name: 'Cesar David',
+    email: 'sadadasdada@gmail.com',
+    tel: 3156468519,
+    date: new Date('2021-11-01T05:00:00.000Z'),
+    tarifa: 300000,
+
+  },
+  {
+    id: 2,
+    name: 'Valentina Rojas',
+    email: 'valentina2000@gmail.com',
+    tel: 3165478634,
+    date: new Date('2021-11-01T05:00:00.000Z'),
+    tarifa: 300000,
+  }
+]
+
 export const agendarCitaFinDeSemanaMock = {
   id: 1,
   name: 'Cesar David Botina',

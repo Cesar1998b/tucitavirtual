@@ -1,1 +1,34 @@
-<p>lista-cita works!</p>
+<section class="btn-container">
+  <button id="btn_agendar" routerLink="/cita/crear" mat-raised-button color="primary">
+    Agendar nueva cita
+  </button>
+</section>
+<section class="lista-cita__table">
+  <section class="table-container">
+    <table class="table" id="cita-list__table">
+      <thead>
+        <th>Fecha de la Cita</th>
+        <th>Nombre Completo</th>
+        <th>Email</th>
+        <th>Teléfono/Celular</th>
+        <th>Valor Cita</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cita of citas | async">
+          <td>{{ cita.date | date }}</td>
+          <td>{{ cita.name }}</td>
+          <td>{{ cita.email }}</td>
+          <td>{{ cita.tel }}</td>
+          <td>{{ cita.tarifa | currency:'USD':'symbol':'3.0' }}</td>
+          <td id="row-btn">
+            <button id="btn-eliminar" mat-raised-button color="warn" focusable="false" (click)="eliminarCita(cita)">
+              Eliminar cita
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>
+

@@ -1,0 +1,63 @@
+.btn-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 115px;
+}
+
+#btn_agendar{
+  transition: 0.5s;
+  background-size: 200% auto;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 12px;
+  background-image: linear-gradient(to right, #3F51B5 0%, #5564bb 51%, #2c3ea1 100%);
+}
+
+#btn_agendar:hover{
+  background-position: right center;
+}
+
+.lista-cita__table {
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  min-width: 1200px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td{
+  border-top: 1px solid rgb(22, 21, 21);
+  border-bottom: 1px solid rgb(22, 21, 21);
+  border-spacing: 0;
+  padding: 0.7em;
+  text-align: center;
+}
+
+th:last-child, td:last-child {
+  border-right: 1px solid rgb(22, 21, 21);
+}
+
+th:first-child, td:first-child {
+  border-left: 1px solid rgb(22, 21, 21);
+}
+
+
+th{
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: rgb(27, 26, 26);
+}
+
+.mat-column-email {
+  max-width: 124px;
+}
+
+#btn-eliminar{
+  border-radius: 12px;
+}

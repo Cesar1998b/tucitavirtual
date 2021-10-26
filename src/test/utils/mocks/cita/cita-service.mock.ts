@@ -1,4 +1,5 @@
 import { Cita } from '../../../../app/feature/producto/shared/model/cita';
+import { CitaArrayMock, CitaMock } from './cita.mock';
 import { of } from 'rxjs';
 
 export class CitaServiceMock {
@@ -13,6 +14,14 @@ export class CitaServiceMock {
     if (year !== 0) {
       return of(true);
     }
+  }
+
+  obtenerCitas() {
+    return of(CitaArrayMock);
+  }
+
+  eliminarCita() {
+    return of(CitaMock);
   }
 
 }

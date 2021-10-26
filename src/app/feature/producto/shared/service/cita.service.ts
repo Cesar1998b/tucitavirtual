@@ -33,4 +33,12 @@ export class CitaService {
     }
   }
 
+  obtenerCitas() {
+    return this.http.doGet<Cita[]>(`${environment.endpoint}citas`);
+  }
+
+  eliminarCita(cita: Cita){
+    return this.http.doDelete<boolean>(`${environment.endpoint}citas/${cita.id}`);
+  }
+
 }
