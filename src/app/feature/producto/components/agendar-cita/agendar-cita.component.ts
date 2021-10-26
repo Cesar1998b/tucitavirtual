@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CitaService } from '../../shared/service/cita.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlertaService } from '@shared/services/alerta.service';
 import { Cita } from './../../shared/model/cita';
 
@@ -19,7 +20,11 @@ export class AgendarCitaComponent implements OnInit {
   fechaActual: Date = new Date();
   festivos: [];
 
-  constructor(protected citaServices: CitaService, private alertaService: AlertaService) { }
+  constructor(
+    protected citaServices: CitaService,
+    private alertaService: AlertaService,
+    private readonly router: Router,
+  ) { }
 
   ngOnInit() {
     this.construirFormularioCitas();
@@ -64,8 +69,8 @@ export class AgendarCitaComponent implements OnInit {
   crearCita(esFestivo: boolean){
     this.citaServices.guardarCita(this.cita, esFestivo).subscribe(() => {
       this.alertaService.alertaExito();
+      this.redirigirMisCitas();
     });
-    this.citasForm.reset();
   }
 
   obtenerFestivos(year: number){
@@ -86,6 +91,10 @@ export class AgendarCitaComponent implements OnInit {
     return (
       this.citasForm.get(controlName).invalid && this.citasForm.get(controlName).touched
     );
+  }
+
+  redirigirMisCitas(): void{
+    this.router.navigate(['cita/lista']);
   }
 
 }

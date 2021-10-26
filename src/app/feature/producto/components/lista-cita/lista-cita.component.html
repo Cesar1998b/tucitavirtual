@@ -15,13 +15,14 @@
 <section class="lista-cita__table">
   <section class="table-container">
     <table class="table" id="cita-list__table">
+      <caption>Tabla Citas</caption>
       <thead>
-        <th>Fecha de la Cita</th>
-        <th>Nombre Completo</th>
-        <th>Email</th>
-        <th>Teléfono/Celular</th>
-        <th>Valor Cita</th>
-        <th></th>
+        <th scope="col">Fecha de la Cita</th>
+        <th scope="col">Nombre Completo</th>
+        <th scope="col">Email</th>
+        <th scope="col">Teléfono/Celular</th>
+        <th scope="col">Valor Cita</th>
+        <th scope="col"></th>
       </thead>
       <tbody>
         <tr *ngFor="let cita of citas | async | filterUser:filtroUsuario">

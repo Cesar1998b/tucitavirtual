@@ -25,7 +25,7 @@ export const CitaArrayMock = [
     date: new Date('2021-11-01T05:00:00.000Z'),
     tarifa: 300000,
   }
-]
+];
 
 export const agendarCitaFinDeSemanaMock = {
   id: 1,

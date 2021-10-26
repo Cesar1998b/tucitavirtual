@@ -1,11 +1,13 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { Cita } from '../model/cita';
 import { CitaService } from './cita.service';
 import { environment } from 'src/environments/environment';
 import { HttpService } from 'src/app/core/services/http.service';
 import { of } from 'rxjs';
 import {
   CitaMock,
+  CitaArrayMock,
   festivosMock
 } from 'src/test/utils/mocks/cita/cita.mock';
 
@@ -51,6 +53,25 @@ describe('CitaService', () => {
     const price = service.calcTarifaCitas(esFestivo);
 
     expect(price).toEqual(expected);
+  });
+
+  it('Debería retornar un Observable<Cita[]> con todas las citas', () => {
+    const spyDoGet = spyOn(http, 'doGet').and.returnValue(of(CitaArrayMock));
+
+    service.obtenerCitas().subscribe((res: Cita[]) => {
+      expect(res).toEqual(CitaArrayMock);
+    });
+
+    expect(spyDoGet).toHaveBeenCalled();
+
+  });
+
+  it('Debe eliminar una cita', () => {
+    const spyDoDelete = spyOn(http, 'doDelete').and.returnValue(of(CitaMock));
+
+    service.eliminarCita(CitaMock);
+    expect(spyDoDelete).toHaveBeenCalled();
+
   });
 
 });

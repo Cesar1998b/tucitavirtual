@@ -42,18 +42,6 @@ describe('ListaCitaComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Debe llamar al servicio para obtener las citas', () => {
-    const getCitasSpy = spyOn(citaService, 'obtenerCitas').and.callThrough();
-
-    component.ngOnInit();
-
-    expect(getCitasSpy).toHaveBeenCalled();
-    component.citas.subscribe((orders: Cita[]) => {
-      expect(orders).toEqual(CitaArrayMock);
-    });
-
-  });
-
   it('Debe llamar al servicio para obtener las citas', fakeAsync(() => {
     const getCitasSpy = spyOn(citaService, 'obtenerCitas').and.callThrough();
 

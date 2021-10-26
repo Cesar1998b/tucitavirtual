@@ -11,9 +11,9 @@ import { Observable } from 'rxjs';
 })
 export class ListaCitaComponent implements OnInit {
 
-  nombresColumnas: string[] = ['date','name','email','tel','tarifa','borrar'];
+  nombresColumnas: string[] = ['date', 'name', 'email', 'tel', 'tarifa', 'borrar'];
   citas: Observable<Cita[]>;
-  filtroUsuario: string = '';
+  filtroUsuario = '';
 
   constructor(protected citaServices: CitaService, private alertaService: AlertaService) { }
 
@@ -29,7 +29,7 @@ export class ListaCitaComponent implements OnInit {
     this.citaServices.eliminarCita(cita).subscribe(() => {
       this.obtenerCitas();
       this.alertaService.alertaInformacion('Cita Eliminada', 'Su cita ha sido eliminada con éxito.');
-    })
+    });
   }
 
 }

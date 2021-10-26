@@ -13,7 +13,7 @@
           class="form-control"
           formControlName="name"
         />
-        <mat-error *ngIf="mostrarMensajeError('name')">Por favor ingrese su nombre completo</mat-error>
+        <mat-error id="agendar-cita__error_name-required" *ngIf="mostrarMensajeError('name')">Por favor ingrese su nombre completo</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
@@ -28,7 +28,7 @@
           placeholder="pat@example.com"
           formControlName="email"
         />
-        <mat-error *ngIf="mostrarMensajeError('email')">Por favor ingrese un email valido</mat-error>
+        <mat-error id="agendar-cita__error_email-required"  *ngIf="mostrarMensajeError('email')">Por favor ingrese un email valido</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Teléfono</mat-label>
@@ -40,7 +40,7 @@
           class="form-control"
           formControlName="tel"
         />
-        <mat-error *ngIf="mostrarMensajeError('tel')">Por favor ingrese su teléfono</mat-error>
+        <mat-error id="agendar-cita__error_tel-required"  *ngIf="mostrarMensajeError('tel')">Por favor ingrese su teléfono</mat-error>
       </mat-form-field>
     </div>
     <div class="row">

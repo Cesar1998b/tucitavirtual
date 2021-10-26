@@ -1,6 +1,6 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AgendarCitaComponent } from './agendar-cita.component';
 import { CommonModule } from '@angular/common';
+import { AgendarCitaComponent } from './agendar-cita.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CitaService } from '../../shared/service/cita.service';
@@ -103,7 +103,7 @@ describe('AgendarCitaComponent', () => {
 
   });
 
-  it('Registrando una cita, alerta por elegir un sábado o domingo', () => {
+  it('Registrando una cita,se alerta por elegir un sábado o domingo y el formulario queda valido para realizar correciones', () => {
     component.citasForm.patchValue(agendarCitaFinDeSemanaMock);
 
     component.agendarCita();
@@ -111,24 +111,26 @@ describe('AgendarCitaComponent', () => {
     expect(component.citasForm.valid).toBeTruthy();
   });
 
-  it('Registrando una cita, alerta por elegir un festivo y aplica tarifa doble', () => {
+  it('Registrando una cita, se alerta por elegir un festivo y aplica tarifa doble', () => {
     const spyGuardar = spyOn(citaService, 'guardarCita').and.callThrough();
+    const spyRedirect = spyOn(component, 'redirigirMisCitas').and.callFake(() => {});
 
     component.citasForm.patchValue(agendarCitaEnFestivosMock);
     component.agendarCita();
 
     expect(spyGuardar).toHaveBeenCalled();
-    expect(component.citasForm.valid).toBeFalsy();
+    expect(spyRedirect).toHaveBeenCalled();
   });
 
-  it('Registrando una cita día de semana y reseteando el formulario', () => {
+  it('Registrando una cita día de semana y resetea el formulario', () => {
     const spyGuardar = spyOn(citaService, 'guardarCita').and.callThrough();
+    const spyRedirect = spyOn(component, 'redirigirMisCitas').and.callFake(() => {});
 
     component.citasForm.patchValue(CitaMock);
     component.agendarCita();
 
     expect(spyGuardar).toHaveBeenCalled();
-    expect(component.citasForm.valid).toBeFalse();
+    expect(spyRedirect).toHaveBeenCalled();
   });
 
   it('Obteniendo los festivos de acuerdo a un año', () => {
