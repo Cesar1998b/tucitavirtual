@@ -8,8 +8,12 @@ import { ListaCitaComponent } from './components/lista-cita/lista-cita.component
 const routes: Routes = [
   {
     path: '',
-    component: CitaComponent,
+    redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: CitaComponent,
   },
   {
     path: 'crear',
