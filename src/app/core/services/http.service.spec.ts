@@ -57,6 +57,17 @@ describe('HttpService', () => {
         expect(httpRequest.request.body).toEqual(body);
     });
 
+    it('should create options and call to endpoint in doGet', () => {
+      const options = {};
+      const url = '/prueba';
+      const spyDoGet = spyOn(service as any, 'createOptions').and.callThrough();
+      service.doGet(url, options).toPromise();
+      expect(spyDoGet).toHaveBeenCalled();
+      const httpRequest = httpMock.expectOne(url);
+      expect(httpRequest.request.method).toEqual('GET');
+      expect(httpRequest.request.url).toEqual(url);
+  });
+
     it('should create options and call to endpoint in doDelete', () => {
         const options = {};
         const url = '/prueba';
