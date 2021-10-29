@@ -1,4 +1,3 @@
-import { browser } from 'protractor';
 import { AppPage } from '../../app.po';
 import { Cita } from '../../page/cita/cita.po';
 
@@ -14,7 +13,7 @@ describe('AgendarCita', () => {
     it('Debe redireccionar al componente AgendarCita"', () => {
       page.navigateTo('');
       cita.clickRedirigirAgendarCita();
-      expect(browser.getCurrentUrl()).toMatch('/cita/crear');
+      expect(page.navigateTo('/crear'));
     });
 
 });

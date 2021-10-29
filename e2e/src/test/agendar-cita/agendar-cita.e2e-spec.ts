@@ -8,7 +8,7 @@ describe('AgendarCita', () => {
     beforeEach( () => {
         page = new AppPage();
         cita = new AgendarCita();
-        page.navigateTo('/cita/crear');
+        page.navigateTo('cita/crear');
     });
 
     it('Debe aparecer el error "Por favor ingrese su nombre completo"', () => {
