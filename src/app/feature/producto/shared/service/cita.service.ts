@@ -33,6 +33,18 @@ export class CitaService {
     }
   }
 
+  verificarFestivo(date: Date, festivos: Array<any>): boolean{
+    const numeroLimite = 10;
+    const festivoKey = 'holiday';
+    const fechaToString = date.toISOString().substring(0, numeroLimite);
+    const esFestivo = festivos.find((item) => item[festivoKey] === fechaToString);
+    if (esFestivo === undefined) {
+      return false;
+    }else{
+      return true;
+    }
+  }
+
   obtenerCitas() {
     return this.http.doGet<Cita[]>(`${environment.endpoint}citas`);
   }

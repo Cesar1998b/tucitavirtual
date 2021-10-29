@@ -133,15 +133,6 @@ describe('AgendarCitaComponent', () => {
     expect(spyRedirect).toHaveBeenCalled();
   });
 
-  it('Obteniendo los festivos de acuerdo a un año', () => {
-    const anio = 2021;
-    const spyFestivos = spyOn(citaService, 'obtenerFestivos').and.callThrough();
-
-    component.obtenerFestivos(anio);
-
-    expect(spyFestivos).toHaveBeenCalled();
-  });
-
   it('Debe mostrar el mensaje de error', () => {
     const control = 'name';
     component.citasForm.markAllAsTouched();

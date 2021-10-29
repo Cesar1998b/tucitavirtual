@@ -27,10 +27,6 @@ describe('CitaComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('Redirige al cita al dar click en en boton agendar cita', () => {
     const spyRedirect = spyOn(component, 'redirectToCitas').and.callThrough();
     const btnAgendarCita = fixture.nativeElement.querySelector('#button_agendar');

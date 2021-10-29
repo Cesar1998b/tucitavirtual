@@ -7,8 +7,6 @@ import { Cita } from './../../shared/model/cita';
 
 const LONGITUD_MINIMA_PERMITIDA_TEXTO = 3;
 const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
-const festivoKey = 'holiday';
-
 @Component({
   selector: 'app-agendar-cita',
   templateUrl: './agendar-cita.component.html',
@@ -47,17 +45,14 @@ export class AgendarCitaComponent implements OnInit {
     return this.citasForm.value;
   }
 
-  get fechaToString(): string{
-    const numeroLimite = 10;
-    return this.cita.date.toISOString().substring(0, numeroLimite);
-  }
-
   agendarCita(){
     this.cita.date.setDate(this.cita.date.getDate() + 1);
     if (this.cita.date.getDay() === 0 || this.cita.date.getDay() === 6) {
       this.alertaService.alertaInformacion('Información', 'Su cita no se puede agendar un sábado o domingo. Por favor revisar la fecha.');
     } else {
-      if (this.verificarFestivo) {
+      this.festivos = this.citaServices.obtenerFestivos(this.cita.date.getFullYear());
+      const esFestivo = this.citaServices.verificarFestivo(this.cita.date, this.festivos);
+      if (esFestivo) {
         this.alertaService.alertaInformacion('Información', `Su cita será agendada para el día ${this.cita.date} la cuál es festivo y se aplicará tarifa doble.`);
         this.crearCita(true);
       }else{
@@ -71,20 +66,6 @@ export class AgendarCitaComponent implements OnInit {
       this.alertaService.alertaExito();
       this.redirigirMisCitas();
     });
-  }
-
-  obtenerFestivos(year: number){
-    this.festivos = this.citaServices.obtenerFestivos(year);
-  }
-
-  verificarFestivo(): boolean{
-    this.obtenerFestivos(this.cita.date.getFullYear());
-    const esFestivo = this.festivos.find((item) => item[festivoKey] === this.fechaToString);
-    if (esFestivo === undefined) {
-      return false;
-    }else{
-      return true;
-    }
   }
 
   mostrarMensajeError(controlName: string) {

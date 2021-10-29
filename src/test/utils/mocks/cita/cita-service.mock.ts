@@ -16,6 +16,12 @@ export class CitaServiceMock {
     }
   }
 
+  verificarFestivo(date: Date, festivos: Array<any>) {
+    if (date && festivos.length !== 0) {
+      return of(true);
+    }
+  }
+
   obtenerCitas() {
     return of(CitaArrayMock);
   }

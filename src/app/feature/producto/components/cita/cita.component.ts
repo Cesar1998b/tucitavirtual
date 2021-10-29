@@ -14,7 +14,7 @@ export class CitaComponent implements OnInit {
   }
 
   redirectToCitas(): void{
-    this.route.navigate(['/cita/crear']);
+    this.route.navigate(['/crear']);
   }
 
 }

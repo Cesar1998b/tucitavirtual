@@ -55,6 +55,22 @@ describe('CitaService', () => {
     expect(price).toEqual(expected);
   });
 
+  it('Debería retornar false ya que no es festivo', () => {
+    const date = new Date('2017-04-15');
+    const expected = false;
+    const esFestivo = service.verificarFestivo(date, festivosMock);
+
+    expect(esFestivo).toEqual(expected);
+  });
+
+  it('Debería retornar true ya que es festivo', () => {
+    const date = new Date('2017-04-14');
+    const expected = true;
+    const esFestivo = service.verificarFestivo(date, festivosMock);
+
+    expect(esFestivo).toEqual(expected);
+  });
+
   it('Debería retornar un Observable<Cita[]> con todas las citas', () => {
     const spyDoGet = spyOn(http, 'doGet').and.returnValue(of(CitaArrayMock));
 
