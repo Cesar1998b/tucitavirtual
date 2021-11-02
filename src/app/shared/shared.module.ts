@@ -5,11 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterUserByNamePipe } from './pipe/filter-user-by-name.pipe';
 import { ErrorFieldComponent } from './components/error-field/error-field.component';
+import { GenericTableComponent } from './components/generic-table/generic-table.component';
 
 @NgModule({
   declarations: [
     FilterUserByNamePipe,
-    ErrorFieldComponent
+    ErrorFieldComponent,
+    GenericTableComponent
   ],
   imports: [CommonModule, ReactiveFormsModule, FormsModule, MaterialModule],
   exports: [
@@ -19,7 +21,8 @@ import { ErrorFieldComponent } from './components/error-field/error-field.compon
     FormsModule,
     FilterUserByNamePipe,
     ErrorFieldComponent,
-    MaterialModule
+    MaterialModule,
+    GenericTableComponent
   ]
 })
 export class SharedModule { }

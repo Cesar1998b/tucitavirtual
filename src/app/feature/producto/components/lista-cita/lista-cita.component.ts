@@ -11,9 +11,26 @@ import { Observable } from 'rxjs';
 })
 export class ListaCitaComponent implements OnInit {
 
-  nombresColumnas: string[] = ['date', 'name', 'email', 'tel', 'tarifa', 'borrar'];
+  labels: string[] = [
+    'Fecha de la Cita',
+    'Nombre Completo',
+    'Email',
+    'Teléfono/Celular',
+    'Valor Cita'
+  ];
+
+  fields: string[] = [
+    'date',
+    'name',
+    'email',
+    'tel',
+    'tarifa'
+  ];
+
+  caption = 'Tabla Citas';
+  action = 'Eliminar';
+
   citas: Observable<Cita[]>;
-  filtroUsuario = '';
 
   constructor(protected citaServices: CitaService, private alertaService: AlertaService) { }
 

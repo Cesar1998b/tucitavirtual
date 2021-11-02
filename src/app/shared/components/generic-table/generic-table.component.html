@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col">
+    <div class="c-search">
+      <input type="text" class="form-control" name="filtroUsuario" placeholder="Buscar Usuario..." [(ngModel)]="filtroUsuario" id="filtro-usuario">
+    </div>
+  </div>
+</div>
+
+<section class="generic-table">
+  <section class="table-container">
+    <table class="table">
+      <caption>{{ caption }}</caption>
+      <thead>
+        <tr>
+          <th *ngFor="let label of labels" id="col">
+            {{ label }}
+          </th>
+          <th id="col">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of data | async | filterUser:filtroUsuario"
+        >
+          <th *ngFor="let field of fields" id="row">
+            <p *ngIf="field === 'date'">{{ item[field] | date }}</p>
+            <p *ngIf="field !== 'date' && field !== 'tarifa'">{{ item[field] }}</p>
+            <p *ngIf="field === 'tarifa'">{{ item[field] | currency:'USD':'symbol':'3.0' }}</p>
+          </th>
+          <th id="row">
+            <button
+              mat-raised-button color="warn"
+              focusable="false"
+              (click)="emitItemEvent(item)"
+              id="generic-table__btn"
+              class="btn btn-primary"
+            >
+              {{ action }}
+            </button>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>

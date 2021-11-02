@@ -32,7 +32,7 @@ export const agendarCitaFinDeSemanaMock = {
   name: 'Cesar David Botina',
   email: 'cesarbotina98@gmail.com',
   tel: 3156468756,
-  date: new Date('2021-10-30T11:47:12.420Z'),
+  date: new Date('2022-03-26T11:47:12.420Z'),
   tarifa: null
 };
 
@@ -41,7 +41,7 @@ export const agendarCitaEnFestivosMock = {
   name: 'Cesar David Botina',
   email: 'cesarbotina98@gmail.com',
   tel: 3156468756,
-  date: new Date('2021-10-31T11:47:12.420Z'),
+  date: new Date('2022-04-13T11:47:12.420Z'),
   tarifa: null
 };
 
